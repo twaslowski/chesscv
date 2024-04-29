@@ -1,0 +1,54 @@
+[
+  {
+    "id": 0,
+    "name": "white-pawn"
+  },
+  {
+    "id": 1,
+    "name": "white-rook"
+  },
+  {
+    "id": 2,
+    "name": "white-knight"
+  },
+  {
+    "id": 3,
+    "name": "white-bishop"
+  },
+  {
+    "id": 4,
+    "name": "white-queen"
+  },
+  {
+    "id": 5,
+    "name": "white-king"
+  },
+  {
+    "id": 6,
+    "name": "black-pawn"
+  },
+  {
+    "id": 7,
+    "name": "black-rook"
+  },
+  {
+    "id": 8,
+    "name": "black-knight"
+  },
+  {
+    "id": 9,
+    "name": "black-bishop"
+  },
+  {
+    "id": 10,
+    "name": "black-queen"
+  },
+  {
+    "id": 11,
+    "name": "black-king"
+  },
+  {
+    "id": 12,
+    "name": "empty"
+  }
+]

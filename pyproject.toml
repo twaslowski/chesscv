@@ -2,12 +2,13 @@
 name = "chess-recognition"
 version = "0.1.0"
 description = "Recognize chess position from images"
-authors = ["Tobias Waslowski <tobiaswaslowski@gmail.com"]
+authors = ["Tobias Waslowski <tobiaswaslowski@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+joptional = "^0.1.1"
 
 
 [build-system]
