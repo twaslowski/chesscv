@@ -1,6 +1,6 @@
 from enum import Enum
 
-from util import load_categories
+from chesscv.util import load_categories
 
 
 class Color(Enum):
@@ -8,10 +8,11 @@ class Color(Enum):
     BLACK = 'b'
 
 
-def render_fen(annotations: dict, meta: dict):
+def render_fen(annotations: dict, meta: dict = None):
     categories = load_categories()
-    move = meta['move_id']
-    current_move = Color.WHITE if move % 2 == 0 else Color.BLACK
+    if meta:
+        move = meta['move_id']
+        current_move = Color.WHITE if move % 2 == 0 else Color.BLACK
     pieces = annotations['pieces']
     fen_map = {
         piece['chessboard_position']: categories[piece['category_id']]['fen_id']
@@ -30,7 +31,6 @@ def generate_fen(piece_positions: dict, move: Color = Color.WHITE):
         col = ord(position[0]) - ord('a')  # Columns are labeled 'a' to 'h'
         board[row][col] = piece
 
-    print_board(board)
     # Replace consecutive '1's with their count
     for i in range(8):
         new_row = []

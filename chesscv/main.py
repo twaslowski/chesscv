@@ -1,14 +1,33 @@
-from util import load_annotations, header
-from chess import render_fen
+import click
+
+from chesscv.util import load_annotations, header
+from chesscv.chess import render_fen
 
 
-def main():
+@click.command()
+@click.option("--image-id", help="Image ID to analyze.")
+@click.option("--print-header", is_flag=True, default=False, help="Print header")
+def analyze(image_id: str, print_header: bool):
+    image_id = int(image_id)
     annotations = load_annotations()
-    image_id = 102
     meta = get_image_meta(image_id, annotations)
-    header(meta)
+    if print_header:
+        header(meta)
     image_annotations = get_annotations_for_image(image_id, annotations)
     print(render_fen(image_annotations, meta))
+
+
+@click.command()
+@click.option("--image-name", help="Image name to filter by.")
+@click.option("--limit", help="Amount of images to display.", default=5)
+def images(image_name: str, limit: int):
+    annotations = load_annotations()
+    if image_name:
+        image_list = [image for image in annotations['images'] if image_name == image['file_name']]
+    else:
+        image_list = annotations['images'][:limit]
+    for image in image_list:
+        print(image)
 
 
 def get_image_meta(image_id: int, annotations: dict) -> dict:
@@ -32,7 +51,3 @@ def get_piece_annotations_for_image(image_id: int, annotations: dict) -> list[di
 
 def get_corner_annotations_for_image(image_id: int, annotations: dict) -> list[dict]:
     return [annotation for annotation in annotations['annotations']['corners'] if annotation['image_id'] == image_id]
-
-
-if __name__ == '__main__':
-    main()

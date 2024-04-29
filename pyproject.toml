@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "chess-recognition"
+name = "chesscv"
 version = "0.1.0"
 description = "Recognize chess position from images"
 authors = ["Tobias Waslowski <tobiaswaslowski@gmail.com>"]
@@ -9,7 +9,11 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 joptional = "^0.1.1"
+click = "^8.1.7"
 
+[tool.poetry.scripts]
+images = "chesscv.main:images"
+analyze = "chesscv.main:analyze"
 
 [build-system]
 requires = ["poetry-core"]
