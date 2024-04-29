@@ -4,11 +4,11 @@ from joptional import Optional
 
 
 def load_annotations() -> dict:
-    return read_json('annotations.json').get()
+    return read_json("annotations.json").get()
 
 
 def load_categories() -> dict:
-    return read_json('categories.json').get()
+    return read_json("categories.json").get()
 
 
 def header(meta: dict):
@@ -40,7 +40,7 @@ def read_image(path: str) -> Optional[bytes] | Optional[None]:
     :return:
     """
     try:
-        with open(path, 'rb') as file:
+        with open(path, "rb") as file:
             return Optional.of(file.read())
     except FileNotFoundError:
         return Optional.empty()

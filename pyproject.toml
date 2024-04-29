@@ -18,6 +18,7 @@ images = "chesscv.main:images"
 analyze = "chesscv.main:analyze"
 pre-process = "chesscv.main:pre_process"
 visualize = "chesscv.main:visualize"
+upload = "chesscv.main:upload"
 
 [build-system]
 requires = ["poetry-core"]
