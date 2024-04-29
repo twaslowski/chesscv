@@ -37,7 +37,7 @@ jobs:
           terraform init
           terraform apply -auto-approve
 
-  build_docker_multi_arch:
+  build_docker:
     needs: create_infrastructure
     runs-on: ubuntu-latest
     if: github.event_name != 'pull_request'
@@ -85,6 +85,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
+          file: cpu.Dockerfile
           context: .
           platforms: linux/amd64
           push: true
