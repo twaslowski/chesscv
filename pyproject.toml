@@ -10,10 +10,13 @@ readme = "README.md"
 python = "^3.11"
 joptional = "^0.1.1"
 click = "^8.1.7"
+opencv-python = "^4.9.0.80"
 
 [tool.poetry.scripts]
 images = "chesscv.main:images"
 analyze = "chesscv.main:analyze"
+pre-process = "chesscv.main:pre_process"
+visualize = "chesscv.main:visualize"
 
 [build-system]
 requires = ["poetry-core"]
