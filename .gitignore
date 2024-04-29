@@ -2,3 +2,5 @@
 images
 __pycache__
 .DS_Store
+.terraform
+terraform/.terraform.lock.hcl

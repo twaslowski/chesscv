@@ -11,6 +11,7 @@ python = "^3.11"
 joptional = "^0.1.1"
 click = "^8.1.7"
 opencv-python = "^4.9.0.80"
+boto3 = "^1.34.93"
 
 [tool.poetry.scripts]
 images = "chesscv.main:images"
