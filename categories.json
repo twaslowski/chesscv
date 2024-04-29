@@ -1,54 +1,67 @@
 [
   {
     "id": 0,
-    "name": "white-pawn"
+    "name": "white-pawn",
+    "fen_id": "P"
   },
   {
     "id": 1,
-    "name": "white-rook"
+    "name": "white-rook",
+    "fen_id": "R"
   },
   {
     "id": 2,
-    "name": "white-knight"
+    "name": "white-knight",
+    "fen_id": "N"
   },
   {
     "id": 3,
-    "name": "white-bishop"
+    "name": "white-bishop",
+    "fen_id": "B"
   },
   {
     "id": 4,
-    "name": "white-queen"
+    "name": "white-queen",
+    "fen_id": "Q"
   },
   {
     "id": 5,
-    "name": "white-king"
+    "name": "white-king",
+    "fen_id": "K"
   },
   {
     "id": 6,
-    "name": "black-pawn"
+    "name": "black-pawn",
+    "fen_id": "p"
   },
   {
     "id": 7,
-    "name": "black-rook"
+    "name": "black-rook",
+    "fen_id": "r"
   },
   {
     "id": 8,
-    "name": "black-knight"
+    "name": "black-knight",
+    "fen_id": "n"
   },
   {
     "id": 9,
-    "name": "black-bishop"
+    "name": "black-bishop",
+    "fen_id": "b"
   },
   {
     "id": 10,
-    "name": "black-queen"
+    "name": "black-queen",
+    "fen_id": "q"
   },
   {
     "id": 11,
-    "name": "black-king"
+    "name": "black-king",
+    "fen_id": "k"
   },
   {
     "id": 12,
-    "name": "empty"
+    "name": "empty",
+    "fen_id": "1"
   }
 ]
