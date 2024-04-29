@@ -1,10 +1,11 @@
+import datetime
 import os
 
 import click
 import cv2
 
 from chesscv.util import load_annotations, header, pretty_print
-from chesscv.chess import render_fen
+from chesscv.chess import render_fen, class_map
 import boto3
 
 
@@ -50,15 +51,31 @@ def images(image_name: str, limit: int):
 )
 def pre_process(image_id: str):
     """
-    Pre-process an image and generate training tags.
+    Pre-process an image and generate training tags. Outputs a JSON line with the bounding box information and metadata.
     """
     image_id = int(image_id)
     annotations = load_annotations()
+    meta = get_image_meta(image_id, annotations)
     image_annotations = get_annotations_for_image(image_id, annotations)
-    for piece_annotation in image_annotations["pieces"]:
-        del piece_annotation["id"]
-        del piece_annotation["image_id"]
-    pretty_print(image_annotations)
+
+    # start building the jsonl object
+    result = {}  # noqa
+    result["bounding-box"] = {}
+    result["bounding-box-metadata"] = {
+        "human-annotated": "yes",
+        "creation-date": datetime.datetime.now().isoformat(),
+        "class-map": class_map(),
+    }
+    result["bounding-box"]["annotations"] = []
+
+    # set source ref
+    result["source-ref"] = f"s3://chesscv-dataset-images/images/{meta['file_name']}"
+
+    # set image size metadata
+    result["bounding-box"]["image_size"] = [
+        {"width": meta["width"], "height": meta["height"], "depth": 3}
+    ]
+    pretty_print(result)
 
 
 @click.command()

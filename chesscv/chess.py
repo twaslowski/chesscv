@@ -8,6 +8,11 @@ class Color(Enum):
     BLACK = "b"
 
 
+def class_map():
+    categories = load_categories()
+    return {category["id"]: category["fen_id"] for category in categories}
+
+
 def render_fen(annotations: dict, meta: dict = None):
     categories = load_categories()
     if meta:

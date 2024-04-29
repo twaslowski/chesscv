@@ -24,6 +24,6 @@ provider "aws" {
 
 data "aws_caller_identity" "current" {}
 
-resource "aws_s3_bucket" "images" {
-  bucket = "chesscv-dataset-images"
+resource "aws_s3_bucket" "dataset" {
+  bucket = "chesscv-dataset"
 }
