@@ -12,7 +12,7 @@ import boto3
 @click.command()
 @click.option("--image-id", help="Image ID to analyze.", type=click.INT)
 @click.option("--print-header", is_flag=True, default=False, help="Print header")
-def analyze(image_id: str, print_header: bool):
+def fen(image_id: str, print_header: bool):
     """
     Retrieve the annotation data for the given image ID and render the FEN string of the position.
     """
@@ -23,6 +23,22 @@ def analyze(image_id: str, print_header: bool):
         header(meta)
     image_annotations = get_annotations_for_image(image_id, annotations)
     print(render_fen(image_annotations, meta))
+
+
+@click.command()
+@click.option("--image-id", help="Image ID to analyze.", type=click.INT)
+@click.option("--print-header", is_flag=True, default=False, help="Print header")
+def annotations(image_id: str, print_header: bool):
+    """
+    Retrieve the annotation data for the given image ID and render the FEN string of the position.
+    """
+    image_id = int(image_id)
+    annotations = load_annotations()
+    meta = get_image_meta(image_id, annotations)
+    if print_header:
+        header(meta)
+    image_annotations = get_annotations_for_image(image_id, annotations)
+    pretty_print(image_annotations)
 
 
 @click.command()
@@ -120,7 +136,7 @@ def upload(directory: str, bucket: str):
     s3 = boto3.client("s3")
     for image in os.listdir(directory):
         print(f"Uploading {image}")
-        s3.upload_file(f"{directory}/{image}", bucket, image)
+        s3.upload_file(f"{directory}/{image}", bucket, f"images/{image}")
 
 
 def get_image_meta(image_id: int, annotations: dict) -> dict:
