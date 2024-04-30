@@ -15,8 +15,8 @@ locals {
   repository_lifecycle_policy = jsonencode({
     rules = [
       {
-        rulePriority = 1,
-        description  = "Keep 1 images",
+        rulePriority = 5,
+        description  = "Keep 5 images",
         selection = {
           tagStatus   = "any",
           countType   = "imageCountMoreThan",
